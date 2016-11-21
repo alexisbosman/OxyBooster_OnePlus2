@@ -1,0 +1,39 @@
+getprop("ro.build.product") == "OnePlus2" || abort("This package is for \"OnePlus2\" devices; this is a \"" + getprop("ro.build.product") + "\".");
+
+ui_print("===================================================");
+ui_print("                                                   ");
+ui_print("   ____            ___                __           ");
+ui_print("  / __ \__ ____ __/ _ )___  ___  ___ / /____ ____  ");
+ui_print(" / /_/ /\ \ / // / _  / _ \/ _ \(_-</ __/ -_) __/  ");
+ui_print(" \____//_\_\\_, /____/\___/\___/___/\__/\__/_/     ");
+ui_print("           /___/                                   ");
+ui_print("                       3.1.0                       ");
+ui_print("                     OnePlus 2                     ");
+ui_print("                                                   ");
+ui_print("===================================================");
+
+ui_print("--> Preparing partitions");
+run_program("/sbin/busybox", "mount", "/system");
+
+ui_print("--> Debloating OxygenOS system");
+ui_print("--> Removing some unnecessary recovery files");
+package_extract_file("debloater.sh", "/tmp/debloater.sh");
+set_perm(0, 0, 0777, "/tmp/debloater.sh");
+run_program("/tmp/debloater.sh");
+delete("/tmp/debloater.sh");
+
+ui_print("--> Optimizing code");
+package_extract_dir("system", "/system");
+
+ui_print("--> build.prop : adding the option to change DPI");
+ui_print("--> build.prop : adding tweaks");
+package_extract_file("buildprop.sh", "/tmp/buildprop.sh");
+set_perm(0, 0, 0777, "/tmp/buildprop.sh");
+run_program("/tmp/buildprop.sh");
+delete("/tmp/buildprop.sh");
+
+ui_print("--> Finishing up");
+unmount("/system");
+
+ui_print("--> Enjoy OxygenOS at its full potential !");
+ui_print("");
