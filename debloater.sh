@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/sbin/sh
 
 rm -rf system/com.touchtype
 
