@@ -1,6 +1,6 @@
-#OxyBooster
+# OxyBooster
 
-This flashable zip was designed to remove excessive files (bloatware) from the OxygenOS system. Additionally, it installs a few build.prop tweaks.please
+This is a TWRP flashable zip designed to remove excessive files (bloatware) from the OxygenOS system. Additionally, it installs a few tweaks to improve the overall system stability and performance.
 
 Please refer to these files for more details:
 ```
