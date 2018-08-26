@@ -7,5 +7,3 @@ Please refer to these files for more details:
 debloater.sh
 buildprop.sh
 ```
-
-Over and out.
